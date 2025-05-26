@@ -9,6 +9,7 @@
     <a href="{{ route('home') }}">Home</a>
     <a href="{{ route('library') }}">Library</a>
     <a href="{{ route('song') }}">Song</a>
+    <a href="{{ route('add') }}">Add</a>
     <h1>Home Page</h1>
 
 </body>
