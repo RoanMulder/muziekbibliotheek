@@ -1,16 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <a href="{{ route('home') }}">Home</a>
-    <a href="{{ route('library') }}">Library</a>
-    <a href="{{ route('song') }}">Song</a>
-    <a href="{{ route('add') }}">Add</a>
-    <h1>Home Page</h1>
+@extends('layouts.master')
 
-</body>
-</html>
+@section('title', 'Home - Muziekbibliotheek')
+
+@section('content')
+    <h1>Home Page</h1>
+@endsection
