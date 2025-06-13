@@ -14,6 +14,11 @@ class SongController extends Controller
         return view('song', compact('songs'));
     }
 
+    public function create()
+    {
+        return view('add');
+    }
+
     public function show(Request $request)
     {
         $songs = Song::all();
@@ -34,7 +39,7 @@ class SongController extends Controller
         $song->release_date = $request->input('release_date');
         $song->save();
 
-        return redirect()->route('song')->with('success', 'Song added successfully!');
+        return redirect()->route('library')->with('success', 'Song added successfully!');
     }
 
     public function delete($id): RedirectResponse

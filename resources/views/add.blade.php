@@ -1,38 +1,54 @@
 @extends('layouts.master')
 
-@section('title', 'Add Song - Songs Library')
+@section('title', 'Add Song')
 
 @section('content')
-    <h2>🎵 Add New Song</h2>
-    
-    @if ($errors->any())
-        <div style="background: #f8d7da; border: 1px solid #f5c6cb; color: #721c24; padding: 10px; border-radius: 4px; margin-bottom: 15px;">
-            <ul style="margin: 0; padding-left: 20px;">
-                @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-        </div>
-    @endif
-    
-    <form action="{{ route('add.store') }}" method="POST" style="max-width: 400px; margin: 0 auto;">
-        @csrf
+    <div class="container">
+        <h1 class="mb-4">Add a New Song</h1>
         
-        <div style="margin-bottom: 15px;">
-            <label style="display: block; margin-bottom: 5px; font-weight: bold; color: #555;">Song Name</label>
-            <input type="text" name="name" value="{{ old('name') }}" placeholder="Song name" style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 4px; font-size: 16px;" required>
-        </div>
-        
-        <div style="margin-bottom: 15px;">
-            <label style="display: block; margin-bottom: 5px; font-weight: bold; color: #555;">Artist</label>
-            <input type="text" name="artist" value="{{ old('artist') }}" placeholder="Artist name" style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 4px; font-size: 16px;" required>
-        </div>
+        @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul class="mb-0">
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
 
-        <div style="margin-bottom: 15px;">
-            <label style="display: block; margin-bottom: 5px; font-weight: bold; color: #555;">Release Date</label>
-            <input type="date" name="release_date" value="{{ old('release_date') }}" style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 4px; font-size: 16px;" required>
-        </div>
-
-        <button type="submit" style="width: 100%; background-color: #007bff; color: white; padding: 12px; border: none; border-radius: 4px; cursor: pointer; font-size: 16px; font-weight: bold;">Add Song</button>
-    </form>
+        <form action="{{ route('add.store') }}" method="POST" class="needs-validation" novalidate>
+            @csrf
+            <div class="mb-3">
+                <label for="name" class="form-label">Song Name</label>
+                <input type="text" class="form-control @error('name') is-invalid @enderror" 
+                       id="name" name="name" value="{{ old('name') }}" required>
+                @error('name')
+                    <div class="invalid-feedback">{{ $message }}</div>
+                @enderror
+            </div>
+            
+            <div class="mb-3">
+                <label for="artist" class="form-label">Artist</label>
+                <input type="text" class="form-control @error('artist') is-invalid @enderror" 
+                       id="artist" name="artist" value="{{ old('artist') }}" required>
+                @error('artist')
+                    <div class="invalid-feedback">{{ $message }}</div>
+                @enderror
+            </div>
+            
+            <div class="mb-3">
+                <label for="release_date" class="form-label">Release Date</label>
+                <input type="date" class="form-control @error('release_date') is-invalid @enderror" 
+                       id="release_date" name="release_date" value="{{ old('release_date') }}" required>
+                @error('release_date')
+                    <div class="invalid-feedback">{{ $message }}</div>
+                @enderror
+            </div>
+            
+            <div class="d-flex gap-2">
+                <button type="submit" class="btn btn-primary">Add Song</button>
+                <a href="{{ route('library') }}" class="btn btn-secondary">Cancel</a>
+            </div>
+        </form>
+    </div>
 @endsection
