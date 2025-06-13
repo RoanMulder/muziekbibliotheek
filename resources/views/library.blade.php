@@ -1,5 +1,6 @@
 @extends('layouts.master')
 
+<<<<<<< HEAD
 @section('title', 'Library - Songs Library')
 
 @section('content')
@@ -37,4 +38,10 @@
     <div class="text-center mt-4">
         <a href="{{ route('add') }}" class="btn btn-primary btn-lg">➕ Add New Song</a>
     </div>
+=======
+@section('title', 'Library - Muziekbibliotheek')
+
+@section('content')
+    <h1>Library Page</h1>
+>>>>>>> 3715a37799704dacf2580b7842fa60d75b67eb49
 @endsection

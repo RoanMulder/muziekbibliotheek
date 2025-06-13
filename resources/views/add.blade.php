@@ -1,6 +1,6 @@
 @extends('layouts.master')
 
-@section('title', 'Add Song')
+@section('title', 'Add Song - Muziekbibliotheek')
 
 @section('content')
     <div class="container">

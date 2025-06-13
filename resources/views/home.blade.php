@@ -2,10 +2,6 @@
 
 @section('title', 'Home - Muziekbibliotheek')
 
-@section('head')
-    <link rel="stylesheet" href="/home.css">
-@endsection
-
 @section('content')
     <div class="container">
         <div class="row justify-content-center">
